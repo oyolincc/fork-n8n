@@ -39,6 +39,9 @@ echo "[3/5] 拷贝配置文件..."
 
 FILES_TO_COPY=(
     "./.env"
+    "./up.sh"
+    "./down.sh"
+    "./compose.yml"
 )
 
 for file in "${FILES_TO_COPY[@]}"; do
