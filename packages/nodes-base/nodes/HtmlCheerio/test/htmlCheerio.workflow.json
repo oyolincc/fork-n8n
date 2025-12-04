@@ -1,0 +1,53 @@
+{
+	"name": "My workflow",
+	"nodes": [
+		{
+			"parameters": {},
+			"type": "n8n-nodes-base.manualTrigger",
+			"typeVersion": 1,
+			"position": [-1180, -60],
+			"id": "d958d20c-ff0c-4fc8-90ac-74abfc9a3938",
+			"name": "When clicking ‘Test workflow’"
+		},
+		{
+			"parameters": {
+				"rules": "[{\"var\":\"href\",\"selector\":\"li > a\",\"valueType\":\"attr\",\"valueBy\":\"href\"},{\"var\":\"title\",\"selector\":\"li > a\",\"multi\":true,\"valueType\":\"text\"}]"
+			},
+			"type": "n8n-nodes-base.htmlCheerio",
+			"typeVersion": 1,
+			"position": [-900, -60],
+			"id": "d3978a12-ae2d-499a-8f8a-de9d2888bb6e",
+			"name": "HTML Cheerio"
+		}
+	],
+	"pinData": {
+		"When clicking ‘Test workflow’": [
+			{
+				"json": {
+					"data": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Cheerio Test Page</title></head><body><h1 id=\"main-title\">Welcome to Cheerio Testing</h1><p class=\"description\">This is a simple HTML page for testing Cheerio.</p><ul id=\"links\"><li><a href=\"https://example.com\">Example Link 1</a></li><li><a href=\"https://example.org\">Example Link 2</a></li></ul><div class=\"content\"><p>Here is some more content for testing purposes.</p></div></body></html>"
+				}
+			}
+		]
+	},
+	"connections": {
+		"When clicking ‘Test workflow’": {
+			"main": [
+				[
+					{
+						"node": "HTML Cheerio",
+						"type": "main",
+						"index": 0
+					}
+				]
+			]
+		}
+	},
+	"active": false,
+	"settings": {
+		"executionOrder": "v1"
+	},
+	"tags": [],
+	"versionId": "9fcb30fa-74ee-4ff0-8dfb-9fe4e2ec6d4b",
+	"meta": null,
+	"id": "WdxPtyimXHCpcKI6"
+}
