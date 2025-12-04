@@ -1,0 +1,43 @@
+name: ${COMPOSE_APP_NS:?compose app namespace is required}
+services:
+  app:
+    restart: unless-stopped
+    image: n8nio/n8n:local
+    container_name: ${COMPOSE_APP_NS}-app
+    volumes:
+      - n8n_data:/home/node/.n8n
+    environment:
+      - DB_TYPE=${DB_TYPE}
+      - DB_POSTGRESDB_DATABASE=${DB_POSTGRESDB_DATABASE}
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_USER=${DB_POSTGRESDB_USER}
+      - DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD}
+    ports:
+      - 5678:5678
+    networks:
+      - backend
+
+  postgres:
+    restart: always
+    image: postgres:16.4-alpine
+    container_name: ${COMPOSE_APP_NS}-postgres
+    # 关闭日志记录
+    command: -c logging_collector=off
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_POSTGRESDB_DATABASE}
+      - POSTGRES_USER=${DB_POSTGRESDB_USER}
+      - POSTGRES_PASSWORD=${DB_POSTGRESDB_PASSWORD}
+    networks:
+      - backend
+
+volumes:
+  n8n_data:
+  postgres_data:
+
+networks:
+  backend:
