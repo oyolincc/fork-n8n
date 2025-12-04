@@ -22,8 +22,7 @@ export default {
 	'formInput.validator.validEmailRequired': 'Must be a valid email',
 	'formInput.validator.uppercaseCharsRequired': (config: { minimum: number }) =>
 		`Must have at least ${config.minimum} uppercase character${config.minimum > 1 ? 's' : ''}`,
-	'formInput.validator.defaultPasswordRequirements':
-		'8+ characters, at least 1 number and 1 capital letter',
+	'formInput.validator.defaultPasswordRequirements': '8+ characters, at least 1 number',
 	'sticky.markdownHint':
 		'You can style with <a href="https://docs.n8n.io/workflows/components/sticky-notes/" target="_blank">Markdown</a>',
 	'tags.showMore': (count: number) => `+${count} more`,

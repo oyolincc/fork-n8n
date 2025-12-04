@@ -6,6 +6,8 @@ services:
     container_name: ${COMPOSE_APP_NS}-app
     volumes:
       - n8n_data:/home/node/.n8n
+    extra_hosts:
+      - "docker.localhost:host-gateway"
     environment:
       - DB_TYPE=${DB_TYPE}
       - DB_POSTGRESDB_DATABASE=${DB_POSTGRESDB_DATABASE}
@@ -13,6 +15,9 @@ services:
       - DB_POSTGRESDB_HOST=postgres
       - DB_POSTGRESDB_USER=${DB_POSTGRESDB_USER}
       - DB_POSTGRESDB_PASSWORD=${DB_POSTGRESDB_PASSWORD}
+      - N8N_DIAGNOSTICS_ENABLED=${N8N_DIAGNOSTICS_ENABLED:-false}
+      - N8N_PROXY_HOPS=${N8N_PROXY_HOPS}
+      - N8N_RUNNERS_ENABLED=${N8N_RUNNERS_ENABLED}
     ports:
       - 15678:5678
     networks:

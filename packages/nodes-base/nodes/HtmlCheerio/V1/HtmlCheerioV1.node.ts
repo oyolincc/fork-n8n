@@ -217,7 +217,6 @@ export class HtmlCheerioV1 implements INodeType {
 					htmlArray = [htmlArray];
 				}
 
-				returnData.push({ json: {}, pairedItem: { item: idx } });
 				for (const html of htmlArray as string[]) {
 					const $ = cheerio.load(html as string);
 					returnData.push({

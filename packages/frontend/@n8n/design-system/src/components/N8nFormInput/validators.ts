@@ -112,7 +112,7 @@ export const defaultPasswordRules: RuleGroup = {
 			rules: [
 				{ name: 'MIN_LENGTH', config: { minimum: 8 } },
 				{ name: 'CONTAINS_NUMBER', config: { minimum: 1 } },
-				{ name: 'CONTAINS_UPPERCASE', config: { minimum: 1 } },
+				// { name: 'CONTAINS_UPPERCASE', config: { minimum: 1 } },
 			],
 			defaultError: {
 				messageKey: 'formInput.validator.defaultPasswordRequirements',
